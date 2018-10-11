@@ -1,28 +1,26 @@
 const { getErrors } = require('./helpers');
 const Tour = require('../../lib/models/Tour');
-const Chance = require('chance');
-const chance = new Chance();
 
-describe.skip('Tours model', () => {
+describe('Tours model', () => {
     it('validates a good model', () => {
         const data = {
-            type: 'purchase',
-            customerId: chance.guid(),
-            purchaseId: chance.guid()
+            title: 'purchase',
+            activities: ['rockin', 'rollin'],
+            launchDate: new Date()
         };
 
         const tour = new Tour(data);
         const jsonTour = tour.toJSON();
-        expect(jsonTour).toEqual({ ...data, _id: expect.any(Object) });
+        expect(jsonTour).toEqual({ ...data, stops: [], _id: expect.any(Object) });
     });
 
-    it('tour type is required', () => {
+    it('tour title is required', () => {
         const tour = new Tour({
-            purchaseId: chance.guid(),
-            customerId: chance.guid()
+            activities: ['rockin', 'rollin'],
+            launchDate: new Date()
         });
 
         const errors = getErrors(tour.validateSync(), 1);
-        expect(errors.type.properties.message).toEqual('Path `type` is required.');
+        expect(errors.title.properties.message).toEqual('Path `title` is required.');
     });
 });
