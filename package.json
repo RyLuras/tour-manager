@@ -1,0 +1,20 @@
+{
+  "name": "tour-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "weather-service-example.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyLuras/tour-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyLuras/tour-manager/issues"
+  },
+  "homepage": "https://github.com/RyLuras/tour-manager#readme"
+}
