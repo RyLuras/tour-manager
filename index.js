@@ -4,7 +4,7 @@ require('./lib/util/connect')();
 const { createServer } = require('http');
 const app = require('./lib/app');
 
-const port = 3579;
+const port = 6798;
 
 const server = createServer(app);
 

@@ -11,7 +11,7 @@ describe('Tours model', () => {
 
         const tour = new Tour(data);
         const jsonTour = tour.toJSON();
-        expect(jsonTour).toEqual({ ...data, stops: [], _id: expect.any(Object) });
+        expect(jsonTour).toEqual({ ...data, stops: [] });
     });
 
     it('tour title is required', () => {
