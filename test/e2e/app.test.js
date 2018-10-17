@@ -50,7 +50,7 @@ describe('validates Tour routes with Stops generated with Weather Middleware', (
             .send({
                 title: 'West Coast Tour',
                 activities: ['Rockin', 'rollin', 'playin the blues'],
-                launchDate: Date.now()
+                launchDate: Date.now(),
             })
             .then(res => {
                 expect(res.body).toEqual({ ...res.body, stops: [] });
@@ -72,6 +72,23 @@ describe('validates Tour routes with Stops generated with Weather Middleware', (
             .get(`/api/tours/${createdTours[0]._id}`)
             .then(res => {
                 expect(res.body).toEqual(createdTours[0]);
+            });
+    });
+
+    it('adds a stop to a tour by id', () => {
+        return request(app)
+            .post(`/api/tours/${createdTours[0]._id}/stops`)
+            .send({ zip: 94061 })
+            .then(res => {
+                expect(res.body.stops).toEqual([{
+                    _id: expect.any(String),
+                    location: {
+                        city: 'Redwood City',
+                        state: 'CA',
+                        zip: 94061
+                    },
+                    weather: expect.any(Object)
+                }]);
             });
     });
 });
