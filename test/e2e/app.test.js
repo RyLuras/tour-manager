@@ -2,7 +2,6 @@ const { dropCollection } = require('./db');
 const request = require('supertest');
 const app = require('../../lib/app');
 
-
 describe('validates Tour routes with Stops generated with Weather Middleware', () => {
 
     let tours = [
@@ -62,9 +61,17 @@ describe('validates Tour routes with Stops generated with Weather Middleware', (
         return request(app)
             .get('/api/tours')
             .then(res => {
-                expect(res.body).toEqual(createdTours);
+                expect(res.body).toContainEqual(createdTours[1]);
+                expect(res.body).toContainEqual(createdTours[2]);
+                expect(res.body).toContainEqual(createdTours[0]);
             });
     });
- 
+    
+    it('gets a tour by id', () => {
+        return request(app)
+            .get(`/api/tours/${createdTours[0]._id}`)
+            .then(res => {
+                expect(res.body).toEqual(createdTours[0]);
+            });
+    });
 });
-
