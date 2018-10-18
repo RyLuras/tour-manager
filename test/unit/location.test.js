@@ -17,9 +17,9 @@ describe('location middleware', () => {
                 zip: '94061' 
             };
 
-            expect(req.body.location).toEqual(weatherObj);
-            expect(req.body.weather.temperature).toEqual(expect.any(String));
-            expect(req.body.weather.condition).toEqual(expect.any(String));
+            expect(req.stop.location).toEqual(weatherObj);
+            expect(req.stop.weather.temperature).toEqual(expect.any(String));
+            expect(req.stop.weather.condition).toEqual(expect.any(String));
             expect(called).toBeTruthy();
             done();
         };
@@ -27,5 +27,3 @@ describe('location middleware', () => {
         location(req, null, next); 
     });
 });
-
-
