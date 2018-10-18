@@ -97,14 +97,31 @@ describe('validates Tour routes with Stops generated with Weather Middleware', (
             .post(`/api/tours/${createdTours[0]._id}/stops`)
             .send({ zip: 94061 })
             .then(res => {
-                const tour_Id = res.body._id;
-                const stop_Id = res.body.stops[0]._id;
+                const tour_id = res.body._id;
+                const stop_id = res.body.stops[0]._id;
                 return request(app)
-                    .delete(`/api/tours/${tour_Id}/stops/${stop_Id}`)
+                    .delete(`/api/tours/${tour_id}/stops/${stop_id}`)
                     .then(res => {
                         expect(res.body).toEqual({ deleted: true });
                     });
             });
             
     });
+
+    it('updates the attendance of a stop', () => {
+        return request(app)
+            .post(`/api/tours/${createdTours[0]._id}/stops`)
+            .send({ zip: 94061 })
+            .then(res => {
+                const tour_id = res.body._id;
+                const stop_id = res.body.stops[0]._id;
+                return request(app)
+                    .post(`/api/tours/${tour_id}/stops/${stop_id}/attendance`)
+                    .send({ attendance: 666 })
+                    .then(res => {
+                        expect(res.body.stops[0].attendance).toEqual(666);
+                    });
+            });
+    });
 });
+
