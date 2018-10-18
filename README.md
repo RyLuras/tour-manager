@@ -1,12 +1,12 @@
-<!-- # MongoDB database using Mongoose
+# MongoDB database Tour Manager
 
-#### An expariment in using Mongoose with Mongo to set Schemas/Models and Validators
+#### A Mongo Database Tour Manager with Weather Checking Middleware for tour Stops
 
 #### By **Ryan Luras, ryanluras@gmail.com, @RyLuras**
 
 ## Description
 
-In this lab we are making an Express server using MongoDB and using Mongoose to handle the Schema and Models for validating CRUD operations on a simple resource (video games).
+In this lab we are making an Express server using MongoDB and using Mongoose to handle to create a Tour Manager which will check the weather of a stop on the tour when handed a zip code. Attendance can later be updated after the show.
 
 ## Setup/Installation Requirements
 
@@ -26,5 +26,5 @@ In this lab we are making an Express server using MongoDB and using Mongoose to 
 * Express
 * Nodemon
 * MongoDB
-* Various little middlewares -->
+* Various little middlewares
 
