@@ -5,7 +5,6 @@ describe('location middleware', () => {
     it('passes weather data from given zip code into req.body and sends to next()', done => {
 
         const req = { body: { zip: 94061 } };
-    
         let called = false;
         
         const next = () => {
@@ -26,4 +25,16 @@ describe('location middleware', () => {
     
         location(req, null, next); 
     });
+
+    it('returns an error if passed a bogus zipcode', done => {
+        const req = { body: { zip: 'abc' } };
+    
+        const next = err => {
+            expect(err).toBeTruthy();
+            done();
+        };
+
+        location(req, null, next);
+    });
 });
+
