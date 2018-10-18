@@ -91,4 +91,20 @@ describe('validates Tour routes with Stops generated with Weather Middleware', (
                 }]);
             });
     });
+
+    it('deletes a stop by id', () => {
+        return request(app)
+            .post(`/api/tours/${createdTours[0]._id}/stops`)
+            .send({ zip: 94061 })
+            .then(res => {
+                const tour_Id = res.body._id;
+                const stop_Id = res.body.stops[0]._id;
+                return request(app)
+                    .delete(`/api/tours/${tour_Id}/stops/${stop_Id}`)
+                    .then(res => {
+                        expect(res.body).toEqual({ deleted: true });
+                    });
+            });
+            
+    });
 });
