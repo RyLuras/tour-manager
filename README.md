@@ -27,4 +27,3 @@ In this lab we are making an Express server using MongoDB and using Mongoose to 
 * Nodemon
 * MongoDB
 * Various little middlewares
-

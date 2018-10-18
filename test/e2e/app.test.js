@@ -43,7 +43,6 @@ describe('validates Tour routes with Stops generated with Weather Middleware', (
         });
     });
 
-
     it('Posts to Tour', () => {
         return request(app)
             .post('/api/tours')
@@ -124,4 +123,3 @@ describe('validates Tour routes with Stops generated with Weather Middleware', (
             });
     });
 });
-

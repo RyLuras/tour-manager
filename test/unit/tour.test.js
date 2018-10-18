@@ -2,15 +2,11 @@ const { getErrors } = require('./helpers');
 const Tour = require('../../lib/models/Tour');
 const { dropCollection } = require('../e2e/db');
 
-
-
 describe('Tours model', () => {
-
 
     beforeEach(() => {
         return dropCollection('tours');
     });
-
 
     it('validates a good model', () => {
         const data = {
@@ -38,7 +34,3 @@ describe('Tours model', () => {
         expect(errors.title.properties.message).toEqual('Path `title` is required.');
     });
 });
-
-
-
-
